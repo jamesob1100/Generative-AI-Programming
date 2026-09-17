@@ -1,0 +1,12 @@
+10
+shape
+categorical
+circle,rectangle,triangle
+size
+numerical
+0 10
+colour
+categorical
+blue,red,yellow,green
+cancel
+

@@ -1,0 +1,70 @@
+1a. What is the percentage variation of energy use that can be caused by different prompting styles for genAI-assisted programming?
+  Different prompting styles in genAI-assisted programming can lead to significant variations in energy consumption, with optimized "green" 
+  prompting techniques potentially reducing energy use by 32% to 50% compared to unoptimized, inefficient prompts.
+
+1b. What prompt characteristics contribute to better energy efficiency?
+  -Conciseness and Precision: 
+    Shorter prompts that are still highly specific require fewer compute cycles and less GPU power, directly reducing energy use.
+  -Zero-Shot or Few-Shot Techniques: 
+    Utilizing zero-shot (no examples) or simple one-shot approaches is generally more energy-efficient than complex few-shot prompts.
+  -Use of Explicit Constraints: 
+    Clearly defining expectations in the prompt reduces the need for the model to generate extra tokens and decreases 
+    the necessity for subsequent, energy-heavy revisions.
+  -Structured Formatting/Tags: 
+    Using structured formatting or custom tags, such as providing context within defined sections, 
+    can guide the model to more direct answers, lowering energy consumption.
+  -Iterative Refinement: 
+    Rather than blindly prompting multiple times to get a good result, designing a robust, thoughtful, and reusable prompt structure 
+    saves total energy. 
+
+1c. Do the energy-optimal prompt characteristics vary across genAI instances (products)?
+  Yes, energy-optimal prompt characteristics vary significantly across different generative AI instances (products), as energy consumption 
+  is heavily dependent on the model's architecture, size, and the specific hardware on which it runs. 
+  While certain practices, like minimizing output length, are generally beneficial, the specific phrasing, keyword choices, and prompting 
+  techniques that minimize energy consumption must be tailored to the particular model being used.
+
+2. Three pieces of of information you should not type into prompts in order to preserve privacy, both your own and that of others
+  -Personally Identifiable Information (PII): 
+    This includes full names, home addresses, Social Security numbers, passport numbers, email addresses, 
+    phone numbers, or any, or any other data that can be used to identify you or another person.
+  -Financial and Sensitive Information: 
+    Avoid inputting credit card numbers, bank account details, investment portfolios, tax identification numbers, 
+    or confidential medical records/diagnostic information.
+  -Confidential Workplace or Proprietary Data: 
+    Never paste company confidential information, source code, non-public legal documents, or trade secrets into a prompt. 
+    This can violate employer policies or legal agreements. 
+
+4. Improving expenses.py:
+  -Justify not closing the file opened on line 42.
+    Who is affected:
+      End users: could hit file-lock/resource issues if handles were actually leaked.
+      Other developers: static-analysis warnings create confusion and reduce trust in code quality
+    Solution applied:
+      Kept the context manager pattern and made file-lifecycle intent explicit with a comment at expenses.py:42.
+      Refactored control flow to use a flag and return after the with block at expenses.py:58, so closure timing is clearer.
+    Brief description:
+      The file handle is safely closed automatically by the with block, even on error/exit.
+      The rewritten flow makes that behavior easier to verify for readers and tools.
+
+  -What type of object is stored in variable wr on line 176?
+    Who is affected:
+      Other developers and maintainers: unclear variable naming/type intent makes debugging and onboarding harder.
+    Solution applied:
+      Renamed wr to writer at expenses.py:184 and updated calls at expenses.py:185 and expenses.py:186.
+    Brief description:
+      This object is an instance of csv.DictWriter from Python csv.
+      It binds a text stream (fh) plus schema (fieldnames) and CSV formatting rules (lineterminator, dialect defaults).
+      It provides structured methods writeheader, writerow, and writerows to serialize dictionaries into CSV rows, 
+      handling column ordering and conversion to delimited text through the underlying writer.
+
+  -What is the meaning of .2f on line 110?
+    Who is affected:
+      Users: impacts displayed totals (precision/rounding perception).
+      Developers: format mini-language can be unclear when embedded inline.
+    Solution applied:
+      Extracted formatting into helper function at expenses.py:64.
+      Updated grouped output to use helper at expenses.py:118.
+    Brief description:
+      .2f means fixed-point formatting with exactly 2 digits after the decimal point.
+      Example: 3 becomes 3.00, 3.456 becomes 3.46.
+      Moving this into a named helper makes intent explicit and reusable.

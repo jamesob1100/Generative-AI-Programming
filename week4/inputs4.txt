@@ -1,0 +1,8 @@
+5
+height
+x
+numerical
+0
+1 4
+cancel
+data4.csv

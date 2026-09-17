@@ -1,0 +1,19 @@
+Vague vs Detailed:
+  vague output:
+    Example name generation: ['Galwynen', 'Elaselen', 'Drawynon', 'Jortharir', 'Arilorin']
+  detailed output:
+    [('Valentina', 'Rossi'), ('Iris', 'Abebe'), ('Zain', 'Leclerc'), ('Omar', 'Bennett'), ('Amina', 'Dias')]
+  
+  detailed gives firstname and surname
+  vague gives a list of 5 firstnames
+  vague does not have surnames
+  
+Teacher Persona:
+  No differences, it used the code from detailed.py
+
+Requirements Collection:
+  output:
+    [{'first': 'Giovanni', 'last': 'Quispe'}, {'first': 'Nadia', 'last': 'Fischer'}, {'first': 'Mateo', 'last': 'Zubair'}, {'first': 'Wang', 'last': 'Ramirez'}, {'first': 'Amina', 'last': 'Dalal'}]
+  differences:
+    used dicts instead of tuples
+    everything else is the same code

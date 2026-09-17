@@ -1,0 +1,77 @@
+"""
+#file handling function
+#function header
+  The File Function should store expense entries in a csv file called expenses.csv. 
+  On starting up, the function looks for this file and if it does not exist it creates it. 
+  If the file does exist, it must contain the header line id,date,description,amount,category . 
+  If it does not contain this line, the program asks the user's permission to overwrite the file,
+  then exiting or treating the file as empty, depending on the answer.
+  The program writes the header line into the file if the file is new or being overwritten, otherwise reads in the data from the file.
+
+  parameters:
+  filename (str): The name of the file to read from or write to.
+
+  returns:
+  list: A list of dictionaries representing the expense entries read from the file, 
+    where each dictionary contains the keys 'id', 'date', 'description', 'amount', and 'category'. 
+    If the file is new or being overwritten, an empty list is returned.
+
+#main function
+#function header
+  The Main Function allows the user to perform several operations, which are offered in a loop, via a menu of numbered options. 
+  All data manipulation is performed in memory, except if the user chooses to 'save the current list...'. 
+  The operations are: 1. display expense items in a table, with each row including date, description, amount and category; 
+  2. group expense items by date or category, displaying group sums in a table; 
+  3. enter a new expense item, including date, description, amount and category; 
+  4. save the current list of items (including any newly added items) to the file; 
+  5. exit the program
+  All invalid input must be handled by re-requesting valid input, or a cancel value, from the user.
+
+  1. Program checks for expenses.csv
+  2. expenses.csv exists and has the header line id,date,description,amount,category
+  3. Program reads in expenses.csv
+  4. User is presented a menu of numbered operations (1. display expense items in a table, with each row including date, description, amount and category; 2. group expense items by date or category, displaying group sums in a table; 3. enter a new expense item, including date, description, amount and category; 4. save the current list of items (including any newly added items) to the file; 5. exit the program)
+  5. User enters 1 (display items in a table)
+  6. Program displays the table 
+  7. User enters 3 (enter a new expense item)
+  8. Program displays format for entry (date, description, amount, category)
+  9. User enters data in correct order
+  10. Program reads in data, checks for correct entry
+  11. User enters 4 (save current list)
+  12. Program saves all data to CSV file, adds ID number to any added items
+  13. User enters 5 (exit program)
+  14. Program terminates
+  ---
+  2a. expenses.csv does not exist
+  3a. expenses.csv is created with header line id,date,description,amount,category
+  4a. return to 3
+  ---
+  2b. expenses.csv exists without the header line id,date,description,amount,category
+  3b. Program asks user permission to overwrite file to input the correct header line
+  ---
+  4c. User gives permission
+  5c. Program overwrites file with correct header line 
+  6c. Return to 3
+  ---
+  4c a. User does not give permission
+  5c a. Program terminates
+  ---
+  9d. User enters data in incorrect order
+  10d. Program reads in data, incorrect order
+  11d. Display to user that order is incorrect and allow user to cancel or re-enter item
+  12d. User re-enters items in correct order
+  13d. return to 10
+  ---
+  12d a. User selects cancel
+  13d a. Return to 4
+
+  parameters:
+  filename (str): The name of the file to read from or write to.
+  data (list): A list of dictionaries representing the expense entries to be manipulated in memory, 
+    where each dictionary contains the keys 'id', 'date', 'description', 'amount', and 'category'.
+    
+  returns:
+  None: This function does not return any value, it simply performs the operations based on user input and manipulates the data in memory, 
+    saving to the file when requested.
+"""
+
